@@ -76,3 +76,24 @@ Entre los cambios del backend tenemos:
 
     Se inserta configuracion para funcionar con mas de un perfil, donde se cambia el acceso a funciones de "repositories" dependiendo del perfil utilizado. Esto se realiza por medio de @Profile(), anotacion que indica bajo que perfil se debe o no usar una clase. Aparte de definir los perfiles, se generan nuevas clases que realizan el control de la base de datos PostgreSQL.
 
+
+Lift and Shift
+    Empaquetado de API y Frontend en imagenes Docker eficientes para desplegar en el cluster.
+
+        Dockerignore: ignora los datos especificados a la hora de generar la docker image.
+
+        Dockerfile: esta compuesto con las instrucciones necesarias para generar la docker image de nuestro proyecto.
+    
+        nginx.conf: configura el servidor web NGINX en base a la configuracion del resto de nuestro proyecto.
+
+        Creacion de docker images:
+            docker build -t terrasense-back:1.0 ./backend
+           
+            ![alt text](image.png)
+
+            docker build -t terrasense-front:1.0 ./frontend
+
+            ![alt text](image-1.png)
+
+            ![alt text](image-2.png)
+            
