@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import com.google.auth.oauth2.GoogleCredentials;
@@ -16,6 +17,7 @@ import com.google.firebase.cloud.FirestoreClient;
 import jakarta.annotation.PostConstruct;
 
 @Service // Se inicia apenas arranca el proyecto
+@Profile("!k8s")
 public class FirebaseInitializer {
 
     @Value("${GOOGLE_APPLICATION_CREDENTIALS}")

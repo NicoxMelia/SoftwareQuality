@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import com.backend.backend.dto.FiltroProductosDTO;
@@ -22,6 +23,7 @@ import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
 
 @Repository
+@Profile("!k8s")
 public class ProductoRepositoryImpl implements ProductoRepository {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductoRepositoryImpl.class);
