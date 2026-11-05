@@ -42,7 +42,7 @@
         await page.goto('http://terrasense.local/');
         // Esperamos 4 segundos para que React intente consultar la API caida y renderice el estado de error
         await page.waitForTimeout(4000);
-        await page.screenshot({ path: 'TPs/TP4-HPA-y-K6/falla-ux.png' });
+        await page.screenshot({ path: 'TPs/TP4-HPA-y-K6/evidence/falla-ux.png' });
       } finally {
         await page.close();
       }
