@@ -33,61 +33,61 @@ spec:
           ports:
             - containerPort: 8080
           env:
-        - name: SPRING_PROFILES_ACTIVE
-      valueFrom:
-      configMapKeyRef:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
                   name: terrasense-config
                   key: SPRING_PROFILES_ACTIVE
             - name: DB_URL
-    valueFrom:
+              valueFrom:
                 configMapKeyRef:
                   name: terrasense-config
                   key: DB_URL
             - name: CORS_ALLOWED_ORIGINS
-      valueFrom:
+              valueFrom:
                 configMapKeyRef:
                   name: terrasense-config
                   key: CORS_ALLOWED_ORIGINS
             - name: JAVA_TOOL_OPTIONS
-      valueFrom:
-      configMapKeyRef:
+              valueFrom:
+                configMapKeyRef:
                   name: terrasense-config
                   key: JAVA_TOOL_OPTIONS
-- name: DB_USER
-          valueFrom:
+            - name: DB_USER
+              valueFrom:
                 secretKeyRef:
                   name: terrasense-secret
-        key: POSTGRES_USER
+                  key: POSTGRES_USER
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-        name: terrasense-secret
+                  name: terrasense-secret
                   key: POSTGRES_PASSWORD
             - name: API_KEY_INSERT
-          valueFrom:
+              valueFrom:
                 secretKeyRef:
                   name: terrasense-secret
                   key: API_KEY_INSERT
           resources:
-        requests:
-      cpu: "100m"
-      memory: "256Mi"
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
             limits:
-              cpu: "300m"
-              memory: "384Mi"
+              cpu: "500m"
+              memory: "512Mi"
           readinessProbe:
-    httpGet:
-      path: /actuator/health/readiness
-      port: 8080
-            initialDelaySeconds: 20
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 35
             periodSeconds: 5
             timeoutSeconds: 3
-            failureThreshold: 3
+            failureThreshold: 6
           livenessProbe:
             httpGet:
-      path: /actuator/health/liveness
-      port: 8080
-            initialDelaySeconds: 40
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 90
             periodSeconds: 10
             timeoutSeconds: 3
             failureThreshold: 3

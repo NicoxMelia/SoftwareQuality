@@ -32,13 +32,13 @@ spec:
           image: postgres:15-alpine
           env:
             - name: POSTGRES_USER
-        valueFrom:
+              valueFrom:
                 secretKeyRef:
                   name: terrasense-secret
-        key: POSTGRES_USER
+                  key: POSTGRES_USER
             - name: POSTGRES_PASSWORD
               valueFrom:
-      secretKeyRef:
+                secretKeyRef:
                   name: terrasense-secret
                   key: POSTGRES_PASSWORD
             - name: POSTGRES_DB
@@ -50,14 +50,14 @@ spec:
             - containerPort: 5432
           resources:
             requests:
-      cpu: "100m"
-      memory: "128Mi"
+              cpu: "100m"
+              memory: "128Mi"
             limits:
-      cpu: "500m"
-      memory: "256Mi"
+              cpu: "500m"
+              memory: "256Mi"
           volumeMounts:
             - name: db-data
-      mountPath: /var/lib/postgresql/data
+              mountPath: /var/lib/postgresql/data
   volumeClaimTemplates:
     - metadata:
         name: db-data
