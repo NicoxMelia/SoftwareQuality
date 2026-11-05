@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: front
+  namespace: terrasense
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: front
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front
+  namespace: terrasense
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front
+  template:
+    metadata:
+      labels:
+        app: front
+    spec:
+      containers:
+        - name: front
+          image: terrasense-front:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+      cpu: "50m"
+      memory: "64Mi"
+            limits:
+      cpu: "150m"
+      memory: "128Mi"
