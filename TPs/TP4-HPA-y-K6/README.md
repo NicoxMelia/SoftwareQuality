@@ -110,3 +110,23 @@ Con las imagenes generadas podemos proceder al despliegue del cluster por medio 
     ![alt text](image-6.png)
 
     ![alt text](image-7.png)
+
+    ![alt text](image-8.png)
+
+Pruebas de carga con k6
+    ![alt text](image-9.png)
+
+    ![alt text](image-10.png)
+    
+    ![alt text](image-11.png)
+
+    ![alt text](image-12.png)
+
+    ![alt text](image-13.png)
+
+Pruebas de fallas
+    ![alt text](image-14.png)
+
+    ![alt text](image-15.png)
+
+    
